@@ -106,7 +106,7 @@
 
     <!-- نافذة إضافة موديل جديد -->
     <div id="add-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden flex items-center justify-center p-4">
-        <div class="bg-[#141414] border border-neutral-800 rounded-2xl w-full max-w-lg p-6 shadow-2xl relative">
+        <div class="bg-[#141414] border border-neutral-800 rounded-2xl w-full max-w-lg p-6 shadow-2xl relative max-h-[90vh] overflow-y-auto">
             <button onclick="closeAddModal()" class="absolute top-4 left-4 text-neutral-400 hover:text-white"><i class="fa-solid fa-xmark text-xl"></i></button>
             <h3 class="text-lg font-bold text-amber-400 mb-4 flex items-center gap-2"><i class="fa-solid fa-plus-circle"></i> إضافة عباية أو وشاح جديد</h3>
             <form id="add-product-form" onsubmit="handleAddNewProduct(event)" class="space-y-4 text-sm">
@@ -132,12 +132,8 @@
                     <input type="text" id="new-sizes" required class="w-full bg-neutral-900 border border-neutral-800 rounded-lg p-3 text-white focus:outline-none focus:border-amber-500" placeholder="مثال: 52, 54, 56, 58 أو مقاس موحد">
                 </div>
                 <div>
-                    <label class="block text-neutral-400 mb-1">صورة الموديل</label>
-                    <div class="flex gap-2">
-                        <input type="url" id="new-image" required class="w-full bg-neutral-900 border border-neutral-800 rounded-lg p-3 text-white focus:outline-none focus:border-amber-500" placeholder="رابط الصورة المباشر">
-                        <input type="file" id="local-file" accept="image/*" onchange="convertImageToBase64(event)" class="hidden">
-                        <button type="button" onclick="document.getElementById('local-file').click()" class="bg-neutral-800 hover:bg-neutral-700 px-4 rounded-lg text-xs font-semibold whitespace-nowrap border border-neutral-700">رفع صورة</button>
-                    </div>
+                    <label class="block text-neutral-400 mb-1">روابط الصور (رابط لكل سطر أو مفصولة بفاصلة)</label>
+                    <textarea id="new-images" rows="2" required class="w-full bg-neutral-900 border border-neutral-800 rounded-lg p-3 text-white focus:outline-none focus:border-amber-500 text-xs" placeholder="ضعي رابط الصورة الرئيسية، وروابط الصور الإضافية..."></textarea>
                 </div>
                 <div>
                     <label class="block text-neutral-400 mb-1">وصف المنتج</label>
@@ -148,14 +144,21 @@
         </div>
     </div>
 
-    <!-- نافذة تفاصيل المنتج والمقاسات -->
+    <!-- نافذة تفاصيل المنتج والمقاسات ومعرض الصور -->
     <div id="product-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden flex items-center justify-center p-4">
-        <div class="bg-[#141414] border border-neutral-800 rounded-2xl w-full max-w-2xl overflow-hidden shadow-2xl relative flex flex-col md:flex-row">
+        <div class="bg-[#141414] border border-neutral-800 rounded-2xl w-full max-w-2xl overflow-hidden shadow-2xl relative flex flex-col md:flex-row max-h-[90vh]">
             <button onclick="closeProductModal()" class="absolute top-4 left-4 z-10 bg-black/60 w-8 h-8 rounded-full flex items-center justify-center text-neutral-300 hover:text-white"><i class="fa-solid fa-xmark"></i></button>
-            <div class="md:w-1/2 h-64 md:h-auto bg-neutral-900 relative">
-                <img id="modal-img" src="" alt="" class="w-full h-full object-cover">
+            
+            <!-- قسم الصور المتعددة -->
+            <div class="md:w-1/2 flex flex-col bg-neutral-900 p-4 justify-center items-center">
+                <div class="w-full h-64 md:h-80 rounded-xl overflow-hidden mb-3 relative bg-black">
+                    <img id="modal-main-img" src="" alt="" class="w-full h-full object-cover">
+                </div>
+                <!-- صور مصغرة للتنقل -->
+                <div id="modal-thumbnails" class="flex gap-2 overflow-x-auto w-full pb-1"></div>
             </div>
-            <div class="md:w-1/2 p-6 flex flex-col justify-between">
+
+            <div class="md:w-1/2 p-6 flex flex-col justify-between overflow-y-auto">
                 <div>
                     <span id="modal-category" class="text-xs text-amber-400 font-semibold uppercase tracking-wider"></span>
                     <h3 id="modal-title" class="text-xl font-bold text-white mt-1 mb-2"></h3>
