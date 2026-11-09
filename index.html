@@ -79,7 +79,6 @@
             <h2 class="text-3xl sm:text-5xl font-black mb-4 tracking-wide">أناقة الحشمة بروحٍ عصرية فاخرة</h2>
             <p class="text-neutral-400 text-sm sm:text-base max-w-xl mx-auto mb-8">اكتشفي تشكيلة حصرية من أرقى العبايات والأوشحة المصنوعة من أجود الأقمشة العالمية.</p>
             
-            <!-- بحث للجوال -->
             <div class="md:hidden max-w-xs mx-auto mb-6">
                 <div class="relative w-full">
                     <input type="text" id="mobile-search-input" oninput="handleSearch(this.value)" placeholder="ابحثي عن عباية، وشاح..." class="w-full bg-neutral-900 border border-neutral-800 rounded-full py-2.5 pr-9 pl-4 text-xs text-white focus:outline-none focus:border-amber-500">
@@ -129,6 +128,10 @@
                     </div>
                 </div>
                 <div>
+                    <label class="block text-neutral-400 mb-1">المقاسات المتاحة (افصلي بينها بفاصلة)</label>
+                    <input type="text" id="new-sizes" required class="w-full bg-neutral-900 border border-neutral-800 rounded-lg p-3 text-white focus:outline-none focus:border-amber-500" placeholder="مثال: 52, 54, 56, 58 أو مقاس موحد">
+                </div>
+                <div>
                     <label class="block text-neutral-400 mb-1">صورة الموديل</label>
                     <div class="flex gap-2">
                         <input type="url" id="new-image" required class="w-full bg-neutral-900 border border-neutral-800 rounded-lg p-3 text-white focus:outline-none focus:border-amber-500" placeholder="رابط الصورة المباشر">
@@ -162,11 +165,7 @@
                     <div id="size-selection-area" class="mb-6">
                         <label class="block text-xs text-neutral-400 mb-2 font-semibold">اختاري المقاس المناسب:</label>
                         <div class="flex flex-wrap gap-2" id="sizes-list">
-                            <button onclick="selectSize(this)" class="size-btn px-3 py-1.5 rounded-lg border border-amber-500 bg-amber-500 text-black text-xs font-bold">52</button>
-                            <button onclick="selectSize(this)" class="size-btn px-3 py-1.5 rounded-lg border border-neutral-800 bg-neutral-900 text-white text-xs font-bold hover:border-amber-500">54</button>
-                            <button onclick="selectSize(this)" class="size-btn px-3 py-1.5 rounded-lg border border-neutral-800 bg-neutral-900 text-white text-xs font-bold hover:border-amber-500">56</button>
-                            <button onclick="selectSize(this)" class="size-btn px-3 py-1.5 rounded-lg border border-neutral-800 bg-neutral-900 text-white text-xs font-bold hover:border-amber-500">58</button>
-                            <button onclick="selectSize(this)" class="size-btn px-3 py-1.5 rounded-lg border border-neutral-800 bg-neutral-900 text-white text-xs font-bold hover:border-amber-500">60</button>
+                            <!-- سيتم توليد المقاسات هنا ديناميكياً حسب الموديل -->
                         </div>
                     </div>
                 </div>
