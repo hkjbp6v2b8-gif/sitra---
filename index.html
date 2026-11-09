@@ -67,7 +67,7 @@
 
     <!-- شريط التنبيهات الأعلى -->
     <div class="bg-gradient-to-r from-sutra-darkGold via-sutra-gold to-sutra-darkGold text-black text-xs font-black py-2.5 px-4 text-center tracking-wide shadow-md">
-        ✨ توصيل مجاني لجميع الطلبات بمناسبة إطلاق التشكيلة الجديدة | كود الخصم: <span class="underline font-extrabold">SUTRA10</span>
+        ✨ توصيل مجاني لجميع الطلبات | كود الخصم الفعال: <span class="underline font-extrabold cursor-pointer" onclick="copyCoupon('SUTRA10')">SUTRA10</span> (خصم 10%)
     </div>
 
     <!-- الهيدر والقائمة الرئيسية -->
@@ -99,17 +99,23 @@
                     <a href="#contact" class="text-gray-300 hover:text-sutra-gold transition-colors py-2">تواصل معنا</a>
                 </nav>
 
-                <!-- أزرار الإجراءات (البحث والسلة) -->
-                <div class="flex items-center space-x-4 space-x-reverse">
+                <!-- أزرار الإجراءات (البحث، المفضلة والسلة) -->
+                <div class="flex items-center space-x-3 space-x-reverse">
                     <!-- حقل البحث -->
-                    <div class="relative hidden sm:block w-48 lg:w-64">
+                    <div class="relative hidden sm:block w-40 lg:w-56">
                         <input type="text" id="search-input" placeholder="ابحثي عن عباية، طرحة..." class="w-full bg-sutra-card border border-sutra-border text-xs rounded-full py-2.5 px-4 pr-9 text-gray-200 focus:outline-none focus:border-sutra-gold transition-colors">
                         <i class="fa-solid fa-magnifying-glass absolute top-3 right-3 text-xs text-sutra-muted"></i>
                     </div>
 
+                    <!-- زر قائمة المفضلة -->
+                    <button id="open-wishlist-btn" class="relative p-2.5 text-sutra-text hover:text-rose-500 rounded-full bg-sutra-card border border-sutra-border hover:border-rose-500 transition-all focus:outline-none">
+                        <i class="fa-solid fa-heart text-lg"></i>
+                        <span id="wishlist-badge" class="absolute -top-1 -right-1 bg-rose-600 text-white text-[11px] font-extrabold w-5 h-5 rounded-full flex items-center justify-center border-2 border-sutra-bg transform scale-0 transition-transform duration-200">0</span>
+                    </button>
+
                     <!-- زر السلة -->
                     <button id="open-cart-btn" class="relative p-2.5 text-sutra-text hover:text-sutra-gold rounded-full bg-sutra-card border border-sutra-border hover:border-sutra-gold transition-all focus:outline-none">
-                        <i class="fa-solid fa-bag-shopping text-xl"></i>
+                        <i class="fa-solid fa-bag-shopping text-lg"></i>
                         <span id="cart-badge" class="absolute -top-1 -right-1 bg-sutra-gold text-black text-[11px] font-extrabold w-5 h-5 rounded-full flex items-center justify-center border-2 border-sutra-bg transform scale-0 transition-transform duration-200">0</span>
                     </button>
                 </div>
@@ -130,7 +136,7 @@
 
     <main class="flex-grow">
         <!-- قسم الواجهة الرئيسي (Hero Section) -->
-        <section id="hero" class="relative bg-black text-white overflow-hidden min-h-[600px] flex items-center">
+        <section id="hero" class="relative bg-black text-white overflow-hidden min-h-[580px] flex items-center">
             <div class="absolute inset-0 z-0 opacity-40 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?q=80&w=1600&auto=format&fit=crop');"></div>
             <div class="absolute inset-0 bg-gradient-to-r from-sutra-bg via-sutra-bg/90 to-transparent z-0"></div>
 
@@ -145,7 +151,7 @@
                     عنوان الفخامة والحشمة المعاصرة
                 </p>
                 <p class="text-sm sm:text-base text-sutra-muted max-w-xl leading-relaxed mb-8">
-                    مجموعة حصرية من العبايات المبتكرة والأوشحة الملكية المصنوعة من أفخر أنواع الحرير والحرير المغسول والشيفون الياباني لتكمل أناقتكِ اليومية وفي المناسبات.
+                    مجموعة حصرية من العبايات المبتكرة والأوشحة الملكية المصنوعة من أفخر أنواع الحرير والكريب الياباني والمخمل الكوري.
                 </p>
                 <div class="flex flex-wrap gap-4">
                     <a href="#shop" class="inline-flex items-center justify-center px-8 py-4 gold-gradient-bg text-black font-extrabold text-sm rounded-xl shadow-xl hover:brightness-110 transition-all gap-2">
@@ -186,7 +192,6 @@
 
         <!-- قسم المتجر والمنتجات -->
         <section id="shop" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-            <!-- رأس القسم والفلترة -->
             <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 border-b border-sutra-border pb-6 gap-4">
                 <div>
                     <span class="text-xs font-bold text-sutra-gold uppercase tracking-widest">التصاميم الحصرية</span>
@@ -194,7 +199,6 @@
                     <p class="mt-2 text-sm text-sutra-muted">اخترت لكِ سترة أجود الأقمشة لتجربة ارتداء مفعمة بالأناقة والراحة</p>
                 </div>
 
-                <!-- أزرار التصنيفات وإضافة الصور -->
                 <div class="flex flex-wrap items-center gap-2" id="category-filters">
                     <button data-category="all" class="filter-btn px-4 py-2 text-xs font-bold rounded-full gold-gradient-bg text-black transition-all">الكل</button>
                     <button data-category="عبايات مناسبات" class="filter-btn px-4 py-2 text-xs font-bold rounded-full bg-sutra-card text-gray-300 hover:text-sutra-gold border border-sutra-border transition-all">عبايات مناسبات</button>
@@ -204,18 +208,16 @@
                     
                     <button onclick="openAddProductModal()" class="px-4 py-2 text-xs font-bold rounded-full bg-sutra-gold/20 text-sutra-gold border border-sutra-gold hover:bg-sutra-gold hover:text-black transition-all flex items-center gap-1.5 mr-auto">
                         <i class="fa-solid fa-plus text-xs"></i>
-                        <span>إضافة صورة موديل جديد</span>
+                        <span>إضافة موديل جديد</span>
                     </button>
                 </div>
             </div>
 
             <!-- شبكة المنتجات -->
-            <div id="products-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                <!-- يتم تحميل المنتجات عبر الجافاسكريبت -->
-            </div>
+            <div id="products-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"></div>
         </section>
 
-        <!-- قسم الاشتراك بالنشرة البريدية والتواصل -->
+        <!-- قسم الاشتراك والتواصل -->
         <section id="contact" class="bg-sutra-card border-t border-sutra-border py-16 text-center relative overflow-hidden">
             <div class="max-w-2xl mx-auto px-4 relative z-10">
                 <i class="fa-regular fa-gem text-4xl text-sutra-gold mb-3"></i>
@@ -238,7 +240,7 @@
                 <div>
                     <span class="text-2xl font-black gold-gradient-text">سترة | SUTRA</span>
                     <p class="mt-3 text-xs leading-relaxed text-sutra-muted">
-                        بوتيك متصنع في تقديم أفخم العبايات النسائية والأوشحة الملكية ذات الطابع المعاصر والراقي.
+                        بوتيك متخصص في تقديم أفخم العبايات النسائية والأوشحة الملكية ذات الطابع المعاصر والراقي.
                     </p>
                 </div>
                 <div>
@@ -256,7 +258,6 @@
                         <li><a href="#" class="hover:text-white transition-colors">جدول مقاسات العبايات</a></li>
                         <li><a href="#" class="hover:text-white transition-colors">طريقة العناية بالعباية والحرير</a></li>
                         <li><a href="#" class="hover:text-white transition-colors">سياسة الاستبدال والإرجاع</a></li>
-                        <li><a href="#" class="hover:text-white transition-colors">الأسئلة الشائعة</a></li>
                     </ul>
                 </div>
                 <div>
@@ -266,7 +267,6 @@
                         <a href="#" class="w-9 h-9 rounded-full bg-sutra-card border border-sutra-border flex items-center justify-center text-sutra-gold hover:bg-sutra-gold hover:text-black transition-all"><i class="fa-brands fa-whatsapp text-sm"></i></a>
                         <a href="#" class="w-9 h-9 rounded-full bg-sutra-card border border-sutra-border flex items-center justify-center text-sutra-gold hover:bg-sutra-gold hover:text-black transition-all"><i class="fa-brands fa-tiktok text-sm"></i></a>
                     </div>
-                    <p class="text-xs text-sutra-muted">خدمة العملاء: يومياً من 9 صباحاً - 10 مساءً</p>
                 </div>
             </div>
             <div class="mt-12 pt-6 border-t border-sutra-border text-center text-xs text-sutra-muted">
@@ -275,31 +275,92 @@
         </div>
     </footer>
 
-    <!-- مودال التفاصيل والمعاينة السريعة للمنتج (Quick View Modal) -->
-    <div id="product-modal-backdrop" class="fixed inset-0 bg-black/80 backdrop-blur-md z-50 opacity-0 pointer-events-none transition-opacity duration-300 flex items-center justify-center p-4">
-        <div id="product-modal" class="bg-sutra-card border border-sutra-border rounded-2xl max-w-2xl w-full overflow-hidden shadow-2xl transform scale-95 transition-transform duration-300 relative text-right max-h-[90vh] overflow-y-auto">
-            <button id="close-modal-btn" class="absolute top-4 left-4 z-10 w-9 h-9 bg-sutra-bg border border-sutra-border rounded-full text-gray-400 hover:text-white flex items-center justify-center transition-colors">
+    <!-- سلة الشراء الجانبية -->
+    <div id="cart-drawer-backdrop" class="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 opacity-0 pointer-events-none transition-opacity duration-300"></div>
+    <div id="cart-drawer" class="fixed top-0 left-0 h-full w-full sm:w-96 bg-sutra-card border-r border-sutra-border z-50 transform -translate-x-full transition-transform duration-300 flex flex-col justify-between">
+        <div class="p-5 border-b border-sutra-border flex items-center justify-between">
+            <div class="flex items-center gap-2">
+                <i class="fa-solid fa-bag-shopping text-sutra-gold text-lg"></i>
+                <h3 class="text-base font-bold text-white">حقيبة التسوق</h3>
+                <span id="cart-items-count-text" class="text-xs text-sutra-muted">(0)</span>
+            </div>
+            <button id="close-cart-btn" class="text-gray-400 hover:text-white p-2">
                 <i class="fa-solid fa-xmark text-lg"></i>
             </button>
-            <div id="modal-content" class="grid grid-cols-1 md:grid-cols-2">
-                <!-- سيتم ملؤه بواسطة الجافاسكريبت -->
+        </div>
+
+        <div id="cart-items-container" class="flex-grow overflow-y-auto p-5 space-y-4">
+            <!-- عناصر السلة -->
+            <div id="empty-cart-state" class="text-center py-12">
+                <i class="fa-solid fa-bag-shopping text-4xl text-sutra-border mb-3"></i>
+                <p class="text-sm font-bold text-gray-300">حقيبة التسوق فارغة حالياً</p>
+                <p class="text-xs text-sutra-muted mt-1">تفقدي التشكيلة وأضيفي عباياتكِ المفضلة!</p>
             </div>
+        </div>
+
+        <div class="p-5 border-t border-sutra-border bg-sutra-bg/80 space-y-3">
+            <!-- الكوبون -->
+            <div class="flex gap-2">
+                <input type="text" id="coupon-input" placeholder="كود الخصم (SUTRA10)" class="w-full bg-sutra-card border border-sutra-border text-xs rounded-xl px-3 py-2 text-white focus:outline-none focus:border-sutra-gold uppercase">
+                <button onclick="applyCoupon()" class="px-4 py-2 bg-sutra-gold/20 text-sutra-gold border border-sutra-gold rounded-xl text-xs font-bold hover:bg-sutra-gold hover:text-black transition-all">تطبيق</button>
+            </div>
+            <div id="coupon-discount-row" class="hidden flex justify-between text-xs text-emerald-400 font-bold">
+                <span>مبلغ الخصم (10%):</span>
+                <span id="discount-amount">0.00 د.ل</span>
+            </div>
+
+            <div class="flex justify-between text-sm font-bold text-white">
+                <span>الإجمالي النهائي:</span>
+                <span id="cart-subtotal" class="text-sutra-gold">0.00 د.ل</span>
+            </div>
+            <button id="checkout-btn" disabled class="w-full py-3.5 gold-gradient-bg text-black font-extrabold text-xs rounded-xl disabled:opacity-50 disabled:cursor-not-allowed hover:brightness-110 transition-all flex items-center justify-center gap-2">
+                <i class="fa-brands fa-whatsapp text-base"></i>
+                <span>تأكيد الطلب عبر الواتساب</span>
+            </button>
         </div>
     </div>
 
-    <!-- مودال إضافة/تغيير صورة الموديل -->
+    <!-- قائمة المفضلة الجانبية (Wishlist Drawer) -->
+    <div id="wishlist-drawer-backdrop" class="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 opacity-0 pointer-events-none transition-opacity duration-300"></div>
+    <div id="wishlist-drawer" class="fixed top-0 left-0 h-full w-full sm:w-96 bg-sutra-card border-r border-sutra-border z-50 transform -translate-x-full transition-transform duration-300 flex flex-col justify-between">
+        <div class="p-5 border-b border-sutra-border flex items-center justify-between">
+            <div class="flex items-center gap-2">
+                <i class="fa-solid fa-heart text-rose-500 text-lg"></i>
+                <h3 class="text-base font-bold text-white">عباياتي المفضلة</h3>
+            </div>
+            <button id="close-wishlist-btn" class="text-gray-400 hover:text-white p-2">
+                <i class="fa-solid fa-xmark text-lg"></i>
+            </button>
+        </div>
+
+        <div id="wishlist-items-container" class="flex-grow overflow-y-auto p-5 space-y-4">
+            <!-- عناصر المفضلة -->
+        </div>
+    </div>
+
+    <!-- مودال التفاصيل والتقييمات للمنتج -->
+    <div id="product-modal-backdrop" class="fixed inset-0 bg-black/80 backdrop-blur-md z-50 opacity-0 pointer-events-none transition-opacity duration-300 flex items-center justify-center p-4">
+        <div id="product-modal" class="bg-sutra-card border border-sutra-border rounded-2xl max-w-3xl w-full overflow-hidden shadow-2xl transform scale-95 transition-transform duration-300 relative text-right max-h-[90vh] overflow-y-auto">
+            <button id="close-modal-btn" class="absolute top-4 left-4 z-10 w-9 h-9 bg-sutra-bg border border-sutra-border rounded-full text-gray-400 hover:text-white flex items-center justify-center transition-colors">
+                <i class="fa-solid fa-xmark text-lg"></i>
+            </button>
+            <div id="modal-content" class="grid grid-cols-1 md:grid-cols-2"></div>
+        </div>
+    </div>
+
+    <!-- مودال إضافة موديل جديد -->
     <div id="add-modal-backdrop" class="fixed inset-0 bg-black/80 backdrop-blur-md z-50 opacity-0 pointer-events-none transition-opacity duration-300 flex items-center justify-center p-4">
         <div class="bg-sutra-card border border-sutra-border rounded-2xl max-w-md w-full p-6 relative text-right">
             <button onclick="closeAddProductModal()" class="absolute top-4 left-4 z-10 w-8 h-8 bg-sutra-bg border border-sutra-border rounded-full text-gray-400 hover:text-white flex items-center justify-center">
                 <i class="fa-solid fa-xmark"></i>
             </button>
-            <h3 class="text-lg font-bold text-white mb-1">إضافة موديل جديد / تغيير الصورة</h3>
-            <p class="text-xs text-sutra-muted mb-4">يمكنك إضافة صور عباياتك الخاصة عن طريق رفع ملف من جهازك أو وضع رابط الصورة مباشرة.</p>
+            <h3 class="text-lg font-bold text-white mb-1">إضافة موديل جديد</h3>
+            <p class="text-xs text-sutra-muted mb-4">يتم حفظ الموديلات المضافة تلقائياً في المتجر على جهازكِ.</p>
             
             <form id="add-product-form" class="space-y-4">
                 <div>
                     <label class="block text-xs font-bold text-gray-300 mb-1">اسم العباية / الوشاح</label>
-                    <input type="text" id="new-prod-name" required placeholder="مثال: عباية مخمل أسود تطريز ذهبي" class="w-full bg-sutra-bg border border-sutra-border rounded-xl p-3 text-xs text-white focus:outline-none focus:border-sutra-gold">
+                    <input type="text" id="new-prod-name" required placeholder="مثال: عباية مخمل أسود مطرزة" class="w-full bg-sutra-bg border border-sutra-border rounded-xl p-3 text-xs text-white focus:outline-none focus:border-sutra-gold">
                 </div>
                 <div>
                     <label class="block text-xs font-bold text-gray-300 mb-1">التصنيف</label>
@@ -315,40 +376,36 @@
                     <input type="number" id="new-prod-price" required placeholder="450" class="w-full bg-sutra-bg border border-sutra-border rounded-xl p-3 text-xs text-white focus:outline-none focus:border-sutra-gold">
                 </div>
                 
-                <!-- خيار رفع الصورة -->
                 <div class="p-4 border border-dashed border-sutra-gold/40 rounded-xl bg-sutra-bg/50 text-center">
                     <label class="block text-xs font-bold text-sutra-gold mb-2 cursor-pointer">
                         <i class="fa-solid fa-cloud-arrow-up text-xl block mb-1"></i>
-                        <span>اضغطي لرفع صورة من الهاتف / الكمبيوتر</span>
+                        <span>رفع صورة من الجهاز</span>
                         <input type="file" id="new-prod-file" accept="image/*" class="hidden" onchange="handleImageUpload(event)">
                     </label>
-                    <p class="text-[10px] text-sutra-muted">أو أديخلي رابط صورة جاهز من الإنترنت أسفله:</p>
+                    <p class="text-[10px] text-sutra-muted">أو أدخلي رابط صورة مباشر:</p>
                     <input type="url" id="new-prod-url" placeholder="https://example.com/abaya.jpg" class="mt-2 w-full bg-sutra-bg border border-sutra-border rounded-lg p-2 text-xs text-white focus:outline-none focus:border-sutra-gold">
                 </div>
 
-                <!-- معاينة الصورة المختارة -->
                 <div id="image-preview-container" class="hidden text-center">
-                    <span class="text-[11px] text-sutra-gold block mb-1">معاينة الصورة المختارة:</span>
-                    <img id="image-preview" src="" alt="Preview" class="h-32 object-cover rounded-xl mx-auto border border-sutra-gold">
+                    <img id="image-preview" src="" class="h-28 object-cover rounded-xl mx-auto border border-sutra-gold">
                 </div>
 
                 <button type="submit" class="w-full py-3.5 gold-gradient-bg text-black font-extrabold text-xs rounded-xl hover:brightness-110 transition-all">
-                    إضافة الموديل إلى المتجر
+                    إضافة إلى المتجر
                 </button>
             </form>
         </div>
     </div>
 
-    <!-- التنبيه السريع (Toast Notification) -->
+    <!-- التنبيه السريع Toast -->
     <div id="toast" class="fixed bottom-6 left-6 z-50 flex items-center bg-sutra-card border border-sutra-gold text-white px-5 py-3.5 rounded-xl shadow-2xl translate-y-20 opacity-0 transition-all duration-300">
         <i class="fa-solid fa-circle-check text-sutra-gold ml-3 text-lg"></i>
-        <span id="toast-message" class="text-xs font-bold">تمت إضافة المنتج إلى الحقيبة</span>
+        <span id="toast-message" class="text-xs font-bold"></span>
     </div>
 
-    <!-- كود الجافاسكريبت والتفاعل -->
     <script>
-        // مصفوفة المنتجات الخاصة بعبايات وأوشحة سترة SUTRA
-        const products = [
+        // المنتجات الافتراضية
+        const initialProducts = [
             {
                 id: 1,
                 name: 'عباية "سترة الملكية" مخمل أسود مطرز',
@@ -356,8 +413,14 @@
                 price: 580.00,
                 image: 'https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?q=80&w=800&auto=format&fit=crop',
                 badge: 'الأكثر طلباً',
-                description: 'عباية فاخرة مصنوعة من الكريب الملكي والمخمل الكوري، مطرزة بخيوط الذهبي الفاخرة على الأكمام، تأتي مع طرحة مطابقة.',
-                sizes: ['52', '54', '56', '58', '60']
+                description: 'عباية فاخرة مصنوعة من الكريب الملكي والمخمل الكوري، مطرزة بخيوط الذهبي الفاخرة على الأكمام.',
+                sizes: ['52', '54', '56', '58', '60'],
+                rating: 5.0,
+                reviewsCount: 14,
+                reviews: [
+                    { name: 'سارة أ.', rating: 5, text: 'العباية ممتازة جداً وخامتها فاخرة، التوصيل كان سريع بالتغليف الملكي!' },
+                    { name: 'فاطمة م.', rating: 5, text: 'تطريز جميل ودقيق للغاية أنصح بها لكل المناسبات.' }
+                ]
             },
             {
                 id: 2,
@@ -366,8 +429,13 @@
                 price: 420.00,
                 image: 'https://images.unsplash.com/photo-1566174053879-31528523f8ae?q=80&w=800&auto=format&fit=crop',
                 badge: 'جديد التشكيلة',
-                description: 'عباية كاجوال وأنيقة بقماش الحرير المغسول المريح والمناسب لليوم والعمل، بلمعة مطفأة وراعية للراحة.',
-                sizes: ['52', '54', '56', '58']
+                description: 'عباية كاجوال وأنيقة بقماش الحرير المغسول المريح والمناسب لليوم والعمل.',
+                sizes: ['52', '54', '56', '58'],
+                rating: 4.8,
+                reviewsCount: 9,
+                reviews: [
+                    { name: 'مريم ك.', rating: 5, text: 'قماشها بارد وناعم جداً للدوام اليومي.' }
+                ]
             },
             {
                 id: 3,
@@ -376,8 +444,13 @@
                 price: 690.00,
                 image: 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=800&auto=format&fit=crop',
                 badge: 'إصدار محدود',
-                description: 'تصميم راقٍ للمناسبات الخاصة والأعياد، مزينة بحبيبات اللؤلؤ والتطريز اليدوي الدقيق.',
-                sizes: ['54', '56', '58', '60']
+                description: 'تصميم راقٍ للمناسبات الخاصة والأعياد، مزينة بحبيبات اللؤلؤ والتطريز اليدوي.',
+                sizes: ['54', '56', '58', '60'],
+                rating: 4.9,
+                reviewsCount: 22,
+                reviews: [
+                    { name: 'آية ب.', rating: 5, text: 'روعة باللبس وكل من شافها سألني عنها!' }
+                ]
             },
             {
                 id: 4,
@@ -386,161 +459,214 @@
                 price: 140.00,
                 image: 'https://images.unsplash.com/photo-1601924994987-69e26d50dc26?q=80&w=800&auto=format&fit=crop',
                 badge: null,
-                description: 'طرحة شيفون ياباني ناعم ومريح وثابت، مزينة بحواف كريستالية ناعمة تُضفي لمسة من البهاء.',
-                sizes: ['قياس موحد (200x75 سم)']
-            },
-            {
-                id: 5,
-                name: 'عباية كريب فرنسي بياقة رسمية',
-                category: 'عبايات يومية',
-                price: 460.00,
-                image: 'https://images.unsplash.com/photo-1509631179647-0177331693ae?q=80&w=800&auto=format&fit=crop',
-                badge: 'تصميم أنيق',
-                description: 'عباية بياقة رسمية وأزرار مخفية، مصممة للمرأة العملية التي تبحث عن الأناقة في كل وقت.',
-                sizes: ['52', '54', '56', '58', '60']
-            },
-            {
-                id: 6,
-                name: 'وشاح حرير طبيعي مطبوع بنقوش عربية',
-                category: 'أوشحة وطرح',
-                price: 210.00,
-                image: 'https://images.unsplash.com/photo-1584917865442-de89df76afd3?q=80&w=800&auto=format&fit=crop',
-                badge: 'حرير 100%',
-                description: 'وشاح من الحرير الطبيعي الفاخر بتصاميم مستوحاة من الخط العربي والأصالة الشرقية.',
-                sizes: ['قياس موحد (180x70 سم)']
-            },
-            {
-                id: 7,
-                name: 'عباية بشت سوداء بقماش الكريب الفاخر',
-                category: 'عبايات فاخرة',
-                price: 610.00,
-                image: 'https://images.unsplash.com/photo-1490481651871-ab68de25d43d?q=80&w=800&auto=format&fit=crop',
-                badge: 'قصة بشت',
-                description: 'عباية بقصة البشت الخليجي الفاخر، واسعة ومريحة مع تطريز قصب ذهبي ناعم على الأطراف.',
-                sizes: ['52', '54', '56', '58']
-            },
-            {
-                id: 8,
-                name: 'طقم طرحة ليزر مزدوجة وثابتة',
-                category: 'أوشحة وطرح',
-                price: 110.00,
-                image: 'https://images.unsplash.com/photo-1590874103328-eac38a683ce7?q=80&w=800&auto=format&fit=crop',
-                badge: 'المرغوبة أكثر',
-                description: 'طرحة ليزر مزدوجة تمنحكِ الثبات طوال اليوم بدون استخدام الكثير من الدبابيس، مريحة وباردة.',
-                sizes: ['قياس موحد']
+                description: 'طرحة شيفون ياباني ناعم ومريح وثابت، مزينة بحواف كريستالية ناعمة.',
+                sizes: ['قياس موحد'],
+                rating: 4.7,
+                reviewsCount: 8,
+                reviews: []
             }
         ];
 
+        // تحميل المنتجات من LocalStorage أو تعيين المبدئية
+        let products = JSON.parse(localStorage.getItem('sutra_products')) || initialProducts;
+        let wishlist = JSON.parse(localStorage.getItem('sutra_wishlist')) || [];
         let cart = [];
         let currentCategory = 'all';
         let searchQuery = '';
+        let appliedCoupon = null;
         let selectedModalProduct = null;
         let selectedSize = '';
-
-        // عناصر DOM
-        const productsGrid = document.getElementById('products-grid');
-        const categoryFilters = document.getElementById('category-filters');
-        const cartBadge = document.getElementById('cart-badge');
-        const cartDrawer = document.getElementById('cart-drawer');
-        const cartBackdrop = document.getElementById('cart-drawer-backdrop');
-        const openCartBtn = document.getElementById('open-cart-btn');
-        const closeCartBtn = document.getElementById('close-cart-btn');
-        const cartItemsContainer = document.getElementById('cart-items-container');
-        const emptyCartState = document.getElementById('empty-cart-state');
-        const cartSubtotal = document.getElementById('cart-subtotal');
-        const cartItemsCountText = document.getElementById('cart-items-count-text');
-        const checkoutBtn = document.getElementById('checkout-btn');
         let uploadedImageData = '';
 
-        // معالجة رفع الصورة محلياً وتحويلها لنص يمكن عرضه
-        window.handleImageUpload = function(event) {
-            const file = event.target.files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    uploadedImageData = e.target.result;
-                    document.getElementById('image-preview').src = uploadedImageData;
-                    document.getElementById('image-preview-container').classList.remove('hidden');
-                };
-                reader.readAsDataURL(file);
+        // حفظ المنتجات في LocalStorage
+        function saveProducts() {
+            localStorage.setItem('sutra_products', JSON.stringify(products));
+        }
+
+        // حفظ المفضلة
+        function saveWishlist() {
+            localStorage.setItem('sutra_wishlist', JSON.stringify(wishlist));
+            updateWishlistUI();
+        }
+
+        // العرض الرئيسي للمنتجات
+        function renderProducts() {
+            const grid = document.getElementById('products-grid');
+            const filtered = products.filter(p => {
+                const matchCat = currentCategory === 'all' || p.category === currentCategory;
+                const matchSearch = p.name.toLowerCase().includes(searchQuery.toLowerCase()) || p.category.includes(searchQuery);
+                return matchCat && matchSearch;
+            });
+
+            if (filtered.length === 0) {
+                grid.innerHTML = `<div class="col-span-full text-center py-12 text-sutra-muted">لا توجد عبايات متطابقة مع البحث حالياً</div>`;
+                return;
             }
-        };
 
-        window.openAddProductModal = function() {
-            document.getElementById('add-modal-backdrop').classList.remove('opacity-0', 'pointer-events-none');
-        };
+            grid.innerHTML = filtered.map(product => {
+                const isFavorite = wishlist.includes(product.id);
+                return `
+                    <div class="bg-sutra-card border border-sutra-border rounded-2xl overflow-hidden group hover:border-sutra-gold transition-all duration-300 flex flex-col justify-between gold-border-glow">
+                        <div class="relative overflow-hidden h-80">
+                            <img src="${product.image}" alt="${product.name}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                            ${product.badge ? `<span class="absolute top-3 right-3 gold-gradient-bg text-black text-[10px] font-black px-2.5 py-1 rounded-full uppercase">${product.badge}</span>` : ''}
+                            
+                            <!-- زر المفضلة -->
+                            <button onclick="toggleWishlist(${product.id})" class="absolute top-3 left-3 w-8 h-8 rounded-full bg-sutra-bg/80 backdrop-blur-md flex items-center justify-center ${isFavorite ? 'text-rose-500' : 'text-gray-400'} hover:text-rose-500 transition-colors">
+                                <i class="${isFavorite ? 'fa-solid' : 'fa-regular'} fa-heart text-sm"></i>
+                            </button>
+                        </div>
+                        <div class="p-5 flex flex-col flex-grow justify-between">
+                            <div>
+                                <div class="flex items-center justify-between text-xs mb-1">
+                                    <span class="text-sutra-gold font-bold">${product.category}</span>
+                                    <span class="text-amber-400 text-[11px] font-bold"><i class="fa-solid fa-star"></i> ${product.rating || '5.0'}</span>
+                                </div>
+                                <h3 class="font-bold text-sm text-white line-clamp-1 group-hover:text-sutra-gold transition-colors">${product.name}</h3>
+                                <p class="text-xs text-sutra-muted mt-1.5 line-clamp-2">${product.description}</p>
+                            </div>
 
-        window.closeAddProductModal = function() {
-            document.getElementById('add-modal-backdrop').classList.add('opacity-0', 'pointer-events-none');
-            document.getElementById('add-product-form').reset();
-            document.getElementById('image-preview-container').classList.add('hidden');
-            uploadedImageData = '';
-        };
+                            <div class="mt-4 pt-3 border-t border-sutra-border flex items-center justify-between">
+                                <span class="text-sm font-black text-sutra-gold">${product.price.toFixed(2)} د.ل</span>
+                                <div class="flex gap-2">
+                                    <button onclick="shareProduct('${product.name}', ${product.price})" class="p-2 text-sutra-muted hover:text-sutra-gold transition-colors" title="مشاركة عبر الواتساب">
+                                        <i class="fa-brands fa-whatsapp"></i>
+                                    </button>
+                                    <button onclick="openProductModal(${product.id})" class="px-3 py-1.5 bg-sutra-bg border border-sutra-border text-xs font-bold text-gray-200 rounded-xl hover:border-sutra-gold hover:text-sutra-gold transition-all">
+                                        معاينة
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
 
-        // إضافة موديل جديد بخصائص الصورة الخاصة بك
-        document.getElementById('add-product-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const name = document.getElementById('new-prod-name').value;
-            const category = document.getElementById('new-prod-cat').value;
-            const price = parseFloat(document.getElementById('new-prod-price').value);
-            const urlInput = document.getElementById('new-prod-url').value;
-
-            const finalImage = uploadedImageData || urlInput || 'https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?q=80&w=800&auto=format&fit=crop';
-
-            const newProduct = {
-                id: Date.now(),
-                name: name,
-                category: category,
-                price: price,
-                image: finalImage,
-                badge: 'جديد',
-                description: 'موديل خاص مضاف حديثاً إلى تشكيلة سترة بمواصفات عالية وأناقة فريدة.',
-                sizes: category.includes('أوشحة') ? ['قياس موحد'] : ['52', '54', '56', '58', '60']
-            };
-
-            products.unshift(newProduct);
+        // المفضلة
+        function toggleWishlist(productId) {
+            if (wishlist.includes(productId)) {
+                wishlist = wishlist.filter(id => id !== productId);
+                showToast('تمت إزالة العباية من قائمة مفضلتكِ');
+            } else {
+                wishlist.push(productId);
+                showToast('تمت إضافة العباية إلى قائمة المفضلة ❤️');
+            }
+            saveWishlist();
             renderProducts();
-            closeAddProductModal();
-            showToast('تمت إضافة الموديل والصورة بنجاح إلى المتجر!');
-        });
+        }
 
-        // فتح مودال تفاصيل المنتج مع تكبير الصورة
-        window.openProductModal = function(productId) {
+        function updateWishlistUI() {
+            const badge = document.getElementById('wishlist-badge');
+            badge.textContent = wishlist.length;
+            badge.classList.toggle('scale-0', wishlist.length === 0);
+
+            const container = document.getElementById('wishlist-items-container');
+            if (wishlist.length === 0) {
+                container.innerHTML = `
+                    <div class="text-center py-12">
+                        <i class="fa-regular fa-heart text-4xl text-sutra-border mb-3"></i>
+                        <p class="text-sm font-bold text-gray-300">قائمة المفضلة فارغة</p>
+                    </div>`;
+                return;
+            }
+
+            const favoredProds = products.filter(p => wishlist.includes(p.id));
+            container.innerHTML = favoredProds.map(p => `
+                <div class="flex items-center space-x-3 space-x-reverse py-3 border-b border-sutra-border">
+                    <img src="${p.image}" class="w-14 h-16 object-cover rounded-xl border border-sutra-border">
+                    <div class="flex-grow">
+                        <h4 class="text-xs font-bold text-white">${p.name}</h4>
+                        <span class="text-xs font-black text-sutra-gold">${p.price.toFixed(2)} د.ل</span>
+                    </div>
+                    <button onclick="openProductModal(${p.id})" class="text-xs text-sutra-gold border border-sutra-gold/40 px-2.5 py-1 rounded-lg">طلب</button>
+                    <button onclick="toggleWishlist(${p.id})" class="text-gray-500 hover:text-rose-500 p-1"><i class="fa-solid fa-trash"></i></button>
+                </div>
+            `).join('');
+        }
+
+        // مشاركة عبر الواتساب
+        function shareProduct(name, price) {
+            const text = `أعجبتني هذه العباية من بوتيك سترة | SUTRA:%0A✨ ${name}%0Aالسعر: ${price} د.ل%0Aتفقديها الآن!`;
+            window.open(`https://wa.me/?text=${text}`, '_blank');
+        }
+
+        // تطبيق الكوبون
+        function applyCoupon() {
+            const code = document.getElementById('coupon-input').value.trim().toUpperCase();
+            if (code === 'SUTRA10') {
+                appliedCoupon = 0.10;
+                document.getElementById('coupon-discount-row').classList.remove('hidden');
+                showToast('تم تطبيق خصم 10% بنجاح! 🎉');
+            } else {
+                showToast('كود الخصم غير صحيح');
+            }
+            updateCartUI();
+        }
+
+        function copyCoupon(code) {
+            document.getElementById('coupon-input').value = code;
+            applyCoupon();
+        }
+
+        // فتح نافذة المعاينة والتقييمات
+        function openProductModal(productId) {
             selectedModalProduct = products.find(p => p.id === productId);
             if (!selectedModalProduct) return;
 
             selectedSize = selectedModalProduct.sizes[0] || 'قياس موحد';
+            const reviews = selectedModalProduct.reviews || [];
 
+            const modalContent = document.getElementById('modal-content');
             modalContent.innerHTML = `
-                <div class="h-80 md:h-full bg-sutra-bg relative group overflow-hidden">
-                    <img src="${selectedModalProduct.image}" alt="${selectedModalProduct.name}" class="w-full h-full object-cover">
-                    <div class="absolute bottom-3 right-3 bg-black/70 backdrop-blur-md text-sutra-gold text-[10px] px-3 py-1 rounded-full border border-sutra-gold/30">
-                        <i class="fa-solid fa-magnifying-glass-plus ml-1"></i> صورة عالية الدقة
-                    </div>
+                <div class="h-80 md:h-full bg-sutra-bg relative">
+                    <img src="${selectedModalProduct.image}" class="w-full h-full object-cover">
                 </div>
-                <div class="p-6 flex flex-col justify-between">
+                <div class="p-6 flex flex-col justify-between max-h-[80vh] overflow-y-auto">
                     <div>
                         <span class="text-xs font-bold text-sutra-gold">${selectedModalProduct.category}</span>
                         <h3 class="text-xl font-black text-white mt-1">${selectedModalProduct.name}</h3>
                         <p class="text-lg font-black text-sutra-gold mt-2">${selectedModalProduct.price.toFixed(2)} د.ل</p>
-                        
                         <p class="text-xs text-sutra-muted mt-3 leading-relaxed">${selectedModalProduct.description}</p>
                         
-                        <!-- اختيار المقاس -->
-                        <div class="mt-5">
-                            <label class="block text-xs font-bold text-gray-300 mb-2">اختر المقاس المطلوب:</label>
-                            <div class="flex flex-wrap gap-2" id="size-selector">
-                                ${selectedModalProduct.sizes.map((size, idx) => `
-                                    <button onclick="selectSize('${size}')" class="size-btn ${idx === 0 ? 'border-sutra-gold bg-sutra-gold/10 text-sutra-gold' : 'border-sutra-border text-gray-400'} border px-3 py-1.5 rounded-lg text-xs font-bold transition-all">
-                                        ${size}
+                        <!-- المقاسات -->
+                        <div class="mt-4">
+                            <label class="block text-xs font-bold text-gray-300 mb-2">المقاس المطلوب:</label>
+                            <div class="flex flex-wrap gap-2">
+                                ${selectedModalProduct.sizes.map((s, idx) => `
+                                    <button onclick="selectSize('${s}')" class="size-btn ${idx === 0 ? 'border-sutra-gold bg-sutra-gold/10 text-sutra-gold' : 'border-sutra-border text-gray-400'} border px-3 py-1.5 rounded-lg text-xs font-bold">
+                                        ${s}
                                     </button>
                                 `).join('')}
                             </div>
                         </div>
+
+                        <!-- الآراء والتقييمات -->
+                        <div class="mt-6 pt-4 border-t border-sutra-border">
+                            <h4 class="text-xs font-bold text-white mb-3">آراء العميلات (${reviews.length})</h4>
+                            <div class="space-y-2 mb-4 max-h-36 overflow-y-auto pr-1">
+                                ${reviews.length > 0 ? reviews.map(r => `
+                                    <div class="bg-sutra-bg p-2.5 rounded-xl border border-sutra-border text-xs">
+                                        <div class="flex justify-between font-bold text-gray-300">
+                                            <span>${r.name}</span>
+                                            <span class="text-amber-400 font-bold">★ ${r.rating}</span>
+                                        </div>
+                                        <p class="text-sutra-muted text-[11px] mt-1">${r.text}</p>
+                                    </div>
+                                `).join('') : '<p class="text-[11px] text-sutra-muted">لا توجد تقييمات بعد، كوني الأولى!</p>'}
+                            </div>
+
+                            <!-- إضافة رأي -->
+                            <form onsubmit="addReview(event, ${selectedModalProduct.id})" class="space-y-2">
+                                <input type="text" id="review-name" placeholder="اسمكِ" required class="w-full bg-sutra-bg border border-sutra-border rounded-lg p-2 text-xs text-white">
+                                <textarea id="review-text" placeholder="رأيكِ بالعباية..." required class="w-full bg-sutra-bg border border-sutra-border rounded-lg p-2 text-xs text-white h-16"></textarea>
+                                <button type="submit" class="w-full py-2 bg-sutra-card border border-sutra-gold text-sutra-gold text-xs rounded-lg font-bold">إضافة تقييمكِ</button>
+                            </form>
+                        </div>
                     </div>
 
-                    <div class="mt-6 pt-4 border-t border-sutra-border flex gap-3">
-                        <button onclick="addModalProductToCart()" class="flex-grow py-3 gold-gradient-bg text-black font-extrabold text-xs rounded-xl hover:brightness-110 transition-all flex items-center justify-center space-x-2 space-x-reverse">
+                    <div class="mt-6 pt-4 border-t border-sutra-border">
+                        <button onclick="addModalProductToCart()" class="w-full py-3.5 gold-gradient-bg text-black font-extrabold text-xs rounded-xl flex items-center justify-center gap-2">
                             <i class="fa-solid fa-bag-shopping"></i>
                             <span>أضيفي للحقيبة</span>
                         </button>
@@ -548,202 +674,227 @@
                 </div>
             `;
 
-            productModalBackdrop.classList.remove('opacity-0', 'pointer-events-none');
+            document.getElementById('product-modal-backdrop').classList.remove('opacity-0', 'pointer-events-none');
             document.getElementById('product-modal').classList.remove('scale-95');
-        };
+        }
 
-        window.selectSize = function(size) {
+        function addReview(e, productId) {
+            e.preventDefault();
+            const name = document.getElementById('review-name').value;
+            const text = document.getElementById('review-text').value;
+
+            const prod = products.find(p => p.id === productId);
+            if (prod) {
+                if (!prod.reviews) prod.reviews = [];
+                prod.reviews.push({ name, rating: 5, text });
+                saveProducts();
+                openProductModal(productId);
+                showToast('شكراً لإضافة رأيكِ الإيجابي!');
+            }
+        }
+
+        function selectSize(size) {
             selectedSize = size;
             document.querySelectorAll('.size-btn').forEach(btn => {
                 if (btn.textContent.trim() === size) {
                     btn.classList.add('border-sutra-gold', 'bg-sutra-gold/10', 'text-sutra-gold');
-                    btn.classList.remove('border-sutra-border', 'text-gray-400');
                 } else {
                     btn.classList.remove('border-sutra-gold', 'bg-sutra-gold/10', 'text-sutra-gold');
-                    btn.classList.add('border-sutra-border', 'text-gray-400');
                 }
             });
-        };
+        }
 
-        window.addModalProductToCart = function() {
+        function addModalProductToCart() {
             if (!selectedModalProduct) return;
-
             const cartItemId = `${selectedModalProduct.id}-${selectedSize}`;
-            const existingItem = cart.find(item => item.cartItemId === cartItemId);
+            const existing = cart.find(i => i.cartItemId === cartItemId);
 
-            if (existingItem) {
-                existingItem.quantity += 1;
+            if (existing) {
+                existing.quantity += 1;
             } else {
-                cart.push({
-                    ...selectedModalProduct,
-                    cartItemId: cartItemId,
-                    selectedSize: selectedSize,
-                    quantity: 1
-                });
+                cart.push({ ...selectedModalProduct, cartItemId, selectedSize, quantity: 1 });
             }
 
             closeModal();
             updateCartUI();
-            showToast(`تمت إضافة "${selectedModalProduct.name}" (مقاس: ${selectedSize}) إلى الحقيبة`);
-        };
+            showToast(`تمت إضافة "${selectedModalProduct.name}" للحقيبة`);
+        }
 
         function closeModal() {
-            productModalBackdrop.classList.add('opacity-0', 'pointer-events-none');
+            document.getElementById('product-modal-backdrop').classList.add('opacity-0', 'pointer-events-none');
             document.getElementById('product-modal').classList.add('scale-95');
         }
 
-        closeModalBtn.addEventListener('click', closeModal);
-        productModalBackdrop.addEventListener('click', (e) => {
-            if (e.target === productModalBackdrop) closeModal();
-        });
-
-        window.removeFromCart = function(cartItemId) {
-            cart = cart.filter(item => item.cartItemId !== cartItemId);
-            updateCartUI();
-        };
-
-        window.updateQuantity = function(cartItemId, delta) {
-            const item = cart.find(item => item.cartItemId === cartItemId);
-            if (!item) return;
-
-            item.quantity += delta;
-            if (item.quantity <= 0) {
-                removeFromCart(cartItemId);
-            } else {
-                updateCartUI();
-            }
-        };
-
+        // تحديث واجهة السلة
         function updateCartUI() {
             const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
             const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            const discount = appliedCoupon ? subtotal * appliedCoupon : 0;
+            const finalTotal = subtotal - discount;
 
-            cartBadge.textContent = totalItems;
-            if (totalItems > 0) {
-                cartBadge.classList.remove('scale-0');
-            } else {
-                cartBadge.classList.add('scale-0');
-            }
+            document.getElementById('cart-badge').textContent = totalItems;
+            document.getElementById('cart-badge').classList.toggle('scale-0', totalItems === 0);
 
-            cartSubtotal.textContent = `${subtotal.toFixed(2)} د.ل`;
-            cartItemsCountText.textContent = `(${totalItems} منتجات)`;
-            checkoutBtn.disabled = cart.length === 0;
+            document.getElementById('cart-subtotal').textContent = `${finalTotal.toFixed(2)} د.ل`;
+            document.getElementById('discount-amount').textContent = `-${discount.toFixed(2)} د.ل`;
+            document.getElementById('cart-items-count-text').textContent = `(${totalItems})`;
+            document.getElementById('checkout-btn').disabled = cart.length === 0;
 
+            const container = document.getElementById('cart-items-container');
             if (cart.length === 0) {
-                cartItemsContainer.innerHTML = '';
-                cartItemsContainer.appendChild(emptyCartState);
+                container.innerHTML = `
+                    <div class="text-center py-12">
+                        <i class="fa-solid fa-bag-shopping text-4xl text-sutra-border mb-3"></i>
+                        <p class="text-sm font-bold text-gray-300">حقيبة التسوق فارغة حالياً</p>
+                    </div>`;
             } else {
-                cartItemsContainer.innerHTML = cart.map(item => `
-                    <div class="flex items-center space-x-4 space-x-reverse py-3 border-b border-sutra-border last:border-b-0">
-                        <img src="${item.image}" alt="${item.name}" class="w-16 h-20 object-cover rounded-xl border border-sutra-border flex-shrink-0">
+                container.innerHTML = cart.map(item => `
+                    <div class="flex items-center space-x-3 space-x-reverse py-3 border-b border-sutra-border">
+                        <img src="${item.image}" class="w-14 h-16 object-cover rounded-xl border border-sutra-border flex-shrink-0">
                         <div class="flex-grow">
-                            <h4 class="text-xs font-bold text-white leading-tight">${item.name}</h4>
-                            <span class="text-[11px] text-sutra-gold font-semibold block mt-0.5">المقاس: ${item.selectedSize}</span>
+                            <h4 class="text-xs font-bold text-white">${item.name}</h4>
+                            <span class="text-[10px] text-sutra-gold block">المقاس: ${item.selectedSize}</span>
                             <span class="text-xs text-gray-300 font-bold mt-1 block">${item.price.toFixed(2)} د.ل</span>
-                            
-                            <div class="flex items-center space-x-2 space-x-reverse mt-2">
-                                <button onclick="updateQuantity('${item.cartItemId}', -1)" class="w-6 h-6 rounded bg-sutra-bg border border-sutra-border flex items-center justify-center text-xs text-gray-300 hover:border-sutra-gold">-</button>
-                                <span class="text-xs font-bold text-white w-4 text-center">${item.quantity}</span>
-                                <button onclick="updateQuantity('${item.cartItemId}', 1)" class="w-6 h-6 rounded bg-sutra-bg border border-sutra-border flex items-center justify-center text-xs text-gray-300 hover:border-sutra-gold">+</button>
+                            <div class="flex items-center space-x-2 space-x-reverse mt-1">
+                                <button onclick="updateQuantity('${item.cartItemId}', -1)" class="w-5 h-5 bg-sutra-bg text-gray-300 rounded">-</button>
+                                <span class="text-xs font-bold">${item.quantity}</span>
+                                <button onclick="updateQuantity('${item.cartItemId}', 1)" class="w-5 h-5 bg-sutra-bg text-gray-300 rounded">+</button>
                             </div>
                         </div>
-                        <div class="text-left flex flex-col justify-between items-end h-full">
-                            <button onclick="removeFromCart('${item.cartItemId}')" class="text-gray-500 hover:text-red-400 text-xs transition-colors p-1">
-                                <i class="fa-solid fa-trash"></i>
-                            </button>
-                            <span class="text-xs font-black text-sutra-gold mt-6">${(item.price * item.quantity).toFixed(2)} د.ل</span>
-                        </div>
+                        <button onclick="removeFromCart('${item.cartItemId}')" class="text-gray-500 hover:text-red-400 text-xs"><i class="fa-solid fa-trash"></i></button>
                     </div>
                 `).join('');
             }
         }
 
-        function toggleCart(open) {
-            if (open) {
-                cartDrawer.classList.remove('-translate-x-full');
-                cartBackdrop.classList.remove('opacity-0', 'pointer-events-none');
-                document.body.classList.add('overflow-hidden');
-            } else {
-                cartDrawer.classList.add('-translate-x-full');
-                cartBackdrop.classList.add('opacity-0', 'pointer-events-none');
-                document.body.classList.remove('overflow-hidden');
+        function updateQuantity(cartItemId, delta) {
+            const item = cart.find(i => i.cartItemId === cartItemId);
+            if (!item) return;
+            item.quantity += delta;
+            if (item.quantity <= 0) cart = cart.filter(i => i.cartItemId !== cartItemId);
+            updateCartUI();
+        }
+
+        function removeFromCart(cartItemId) {
+            cart = cart.filter(i => i.cartItemId !== cartItemId);
+            updateCartUI();
+        }
+
+        // رفع وتخزين الموديلات
+        function handleImageUpload(e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(evt) {
+                    uploadedImageData = evt.target.result;
+                    document.getElementById('image-preview').src = uploadedImageData;
+                    document.getElementById('image-preview-container').classList.remove('hidden');
+                };
+                reader.readAsDataURL(file);
             }
         }
 
-        function showToast(message) {
-            toastMessage.textContent = message;
-            toast.classList.remove('translate-y-20', 'opacity-0');
-            setTimeout(() => {
-                toast.classList.add('translate-y-20', 'opacity-0');
-            }, 3000);
+        function openAddProductModal() {
+            document.getElementById('add-modal-backdrop').classList.remove('opacity-0', 'pointer-events-none');
         }
 
-        categoryFilters.addEventListener('click', (e) => {
+        function closeAddProductModal() {
+            document.getElementById('add-modal-backdrop').classList.add('opacity-0', 'pointer-events-none');
+        }
+
+        document.getElementById('add-product-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = document.getElementById('new-prod-name').value;
+            const category = document.getElementById('new-prod-cat').value;
+            const price = parseFloat(document.getElementById('new-prod-price').value);
+            const urlInput = document.getElementById('new-prod-url').value;
+
+            const finalImg = uploadedImageData || urlInput || 'https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?q=80&w=800&auto=format&fit=crop';
+
+            const newProd = {
+                id: Date.now(),
+                name,
+                category,
+                price,
+                image: finalImg,
+                badge: 'جديد',
+                description: 'موديل خاص مضاف حديثاً إلى تشكيلة سترة.',
+                sizes: category.includes('أوشحة') ? ['قياس موحد'] : ['52', '54', '56', '58', '60'],
+                rating: 5.0,
+                reviewsCount: 1,
+                reviews: []
+            };
+
+            products.unshift(newProd);
+            saveProducts();
+            renderProducts();
+            closeAddProductModal();
+            showToast('تم حفظ الموديل الجديد في المتجر بنجاح!');
+        });
+
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toast-message').textContent = msg;
+            toast.classList.remove('translate-y-20', 'opacity-0');
+            setTimeout(() => toast.classList.add('translate-y-20', 'opacity-0'), 3000);
+        }
+
+        // أحداث الأزرار والسلال
+        document.getElementById('open-cart-btn').addEventListener('click', () => {
+            document.getElementById('cart-drawer').classList.remove('-translate-x-full');
+            document.getElementById('cart-drawer-backdrop').classList.remove('opacity-0', 'pointer-events-none');
+        });
+
+        document.getElementById('close-cart-btn').addEventListener('click', () => {
+            document.getElementById('cart-drawer').classList.add('-translate-x-full');
+            document.getElementById('cart-drawer-backdrop').classList.add('opacity-0', 'pointer-events-none');
+        });
+
+        document.getElementById('open-wishlist-btn').addEventListener('click', () => {
+            document.getElementById('wishlist-drawer').classList.remove('-translate-x-full');
+            document.getElementById('wishlist-drawer-backdrop').classList.remove('opacity-0', 'pointer-events-none');
+        });
+
+        document.getElementById('close-wishlist-btn').addEventListener('click', () => {
+            document.getElementById('wishlist-drawer').classList.add('-translate-x-full');
+            document.getElementById('wishlist-drawer-backdrop').classList.add('opacity-0', 'pointer-events-none');
+        });
+
+        document.getElementById('close-modal-btn').addEventListener('click', closeModal);
+
+        document.getElementById('checkout-btn').addEventListener('click', () => {
+            let msg = `مرحباً سترة | SUTRA%0Aأرغب بتأكيد الطلب التالي:%0A%0A`;
+            cart.forEach((item, i) => {
+                msg += `${i + 1}. ${item.name} - مقاس: ${item.selectedSize} (كمية: ${item.quantity})%0A`;
+            });
+            const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            const total = appliedCoupon ? subtotal * 0.9 : subtotal;
+            msg += `%0Aالمجموع النهائي: ${total.toFixed(2)} د.ل`;
+            window.open(`https://wa.me/?text=${msg}`, '_blank');
+        });
+
+        document.getElementById('category-filters').addEventListener('click', (e) => {
             if (e.target.classList.contains('filter-btn')) {
                 document.querySelectorAll('.filter-btn').forEach(btn => {
                     btn.classList.remove('gold-gradient-bg', 'text-black');
                     btn.classList.add('bg-sutra-card', 'text-gray-300');
                 });
-                
                 e.target.classList.remove('bg-sutra-card', 'text-gray-300');
                 e.target.classList.add('gold-gradient-bg', 'text-black');
-
                 currentCategory = e.target.getAttribute('data-category');
                 renderProducts();
             }
         });
 
-        const handleSearch = (e) => {
+        document.getElementById('search-input').addEventListener('input', (e) => {
             searchQuery = e.target.value;
             renderProducts();
-        };
-
-        searchInput.addEventListener('input', handleSearch);
-        mobileSearchInput.addEventListener('input', handleSearch);
-
-        openCartBtn.addEventListener('click', () => toggleCart(true));
-        closeCartBtn.addEventListener('click', () => toggleCart(false));
-        cartBackdrop.addEventListener('click', () => toggleCart(false));
-        startShoppingBtn.addEventListener('click', () => toggleCart(false));
-
-        mobileMenuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
         });
 
-        document.querySelectorAll('.mobile-nav-link').forEach(link => {
-            link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
-        });
-
-        // طلب الطلب عبر الواتساب مباشر
-        checkoutBtn.addEventListener('click', () => {
-            if (cart.length === 0) return;
-
-            let orderText = `مرحباً متجر سترة | SUTRA 👋%0Aأود طلب العبايات والأوشحة التالية:%0A%0A`;
-            cart.forEach((item, index) => {
-                orderText += `${index + 1}. ${item.name}%0A   - المقاس: ${item.selectedSize}%0A   - الكمية: ${item.quantity}%0A   - السعر: ${(item.price * item.quantity).toFixed(2)} د.ل%0A%0A`;
-            });
-
-            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-            orderText += `إجمالي الطلب: ${total.toFixed(2)} د.ل%0Aشكراً لكم!`;
-
-            window.open(`https://wa.me/?text=${orderText}`, '_blank');
-            
-            showToast('جاري توجيهكِ إلى واتساب لإتمام طلبكِ...');
-            cart = [];
-            updateCartUI();
-            toggleCart(false);
-        });
-
-        document.getElementById('newsletter-form').addEventListener('submit', (e) => {
-            e.preventDefault();
-            showToast('شكراً لاشتراككِ في عائلة سترة!');
-            e.target.reset();
-        });
-
-        window.addEventListener('DOMContentLoaded', () => {
-            renderProducts();
-            updateCartUI();
-        });
+        // التشغيل المبدئي
+        renderProducts();
+        updateWishlistUI();
+        updateCartUI();
     </script>
 </body>
 </html>
