@@ -99,7 +99,7 @@
         <div id="products-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"></div>
     </main>
 
-    <!-- زر الواتساب العائم السريع مرتبط برقمك -->
+    <!-- زر الواتساب العائم السريع -->
     <a href="https://wa.me/218910618262" target="_blank" class="fixed bottom-6 left-6 z-40 bg-emerald-600 hover:bg-emerald-500 text-white w-14 h-14 rounded-full shadow-2xl flex items-center justify-center text-2xl transition transform hover:scale-110">
         <i class="fa-brands fa-whatsapp"></i>
     </a>
@@ -132,8 +132,11 @@
                     <input type="text" id="new-sizes" required class="w-full bg-neutral-900 border border-neutral-800 rounded-lg p-3 text-white focus:outline-none focus:border-amber-500" placeholder="مثال: 52, 54, 56, 58 أو مقاس موحد">
                 </div>
                 <div>
-                    <label class="block text-neutral-400 mb-1">روابط الصور (رابط لكل سطر أو مفصولة بفاصلة)</label>
-                    <textarea id="new-images" rows="2" required class="w-full bg-neutral-900 border border-neutral-800 rounded-lg p-3 text-white focus:outline-none focus:border-amber-500 text-xs" placeholder="ضع رابط الصورة الرئيسية، ورابط الصور الإضافية..."></textarea>
+                    <label class="block text-neutral-400 mb-1">صور المنتج (اختر صور من الهاتف أو ضع روابط)</label>
+                    <div class="space-y-2">
+                        <input type="file" id="local-files-input" accept="image/*" multiple onchange="handleLocalImagesUpload(event)" class="w-full bg-neutral-900 border border-neutral-800 rounded-lg p-2.5 text-xs text-neutral-300 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-amber-500 file:text-black hover:file:bg-amber-400 cursor-pointer">
+                        <textarea id="new-images" rows="2" class="w-full bg-neutral-900 border border-neutral-800 rounded-lg p-3 text-white focus:outline-none focus:border-amber-500 text-xs" placeholder="أو ضع روابط الصور هنا (مفصولة بفاصلة أو سطر جديد)..."></textarea>
+                    </div>
                 </div>
                 <div>
                     <label class="block text-neutral-400 mb-1">وصف المنتج</label>
