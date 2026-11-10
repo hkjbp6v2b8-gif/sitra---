@@ -71,3 +71,186 @@
             </div>
         </div>
     </header>
+
+    <!-- قسم الواجهة الرئيسي (Hero) -->
+    <section class="relative py-16 px-4 text-center bg-gradient-to-b from-neutral-900/60 to-[#0b0b0b] border-b border-neutral-900">
+        <div class="max-w-3xl mx-auto">
+            <span class="text-xs uppercase tracking-widest bg-amber-500/10 text-amber-400 px-3 py-1 rounded-full border border-amber-500/20 inline-block mb-4">تشكيلة 2026 الحصرية</span>
+            <h2 class="text-3xl sm:text-5xl font-black mb-4 tracking-wide">أناقة الحشمة بروحٍ عصرية فاخرة</h2>
+            <p class="text-neutral-400 text-sm sm:text-base max-w-xl mx-auto mb-8">اكتشفي تشكيلة حصرية من أرقى العبايات والأوشحة المصنوعة من أجود الأقمشة العالمية.</p>
+            
+            <div class="md:hidden max-w-xs mx-auto mb-6">
+                <div class="relative w-full">
+                    <input type="text" id="mobile-search-input" oninput="handleSearch(this.value)" placeholder="ابحثي عن عباية، وشاح..." class="w-full bg-neutral-900 border border-neutral-800 rounded-full py-2.5 pr-9 pl-4 text-xs text-white focus:outline-none focus:border-amber-500">
+                    <i class="fa-solid fa-magnifying-glass absolute right-3 top-3 text-neutral-500 text-xs"></i>
+                </div>
+            </div>
+
+            <div class="flex flex-wrap justify-center gap-3">
+                <button onclick="filterCategory('all')" class="category-btn active px-5 py-2 rounded-full text-xs font-bold transition bg-amber-500 text-black shadow-lg">الكل</button>
+                <button onclick="filterCategory('عبايات')" class="category-btn px-5 py-2 rounded-full text-xs font-bold transition bg-neutral-900 text-neutral-300 hover:bg-neutral-800 border border-neutral-800">العبايات</button>
+                <button onclick="filterCategory('أوشحة')" class="category-btn px-5 py-2 rounded-full text-xs font-bold transition bg-neutral-900 text-neutral-300 hover:bg-neutral-800 border border-neutral-800">الأوشحة</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- محتوى المتجر (عرض المنتجات) -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 flex-grow w-full">
+        <div id="products-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"></div>
+    </main>
+
+    <!-- زر الواتساب العائم السريع مرتبط برقمك -->
+    <a href="https://wa.me/218910618262" target="_blank" class="fixed bottom-6 left-6 z-40 bg-emerald-600 hover:bg-emerald-500 text-white w-14 h-14 rounded-full shadow-2xl flex items-center justify-center text-2xl transition transform hover:scale-110">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <!-- نافذة إضافة موديل جديد -->
+    <div id="add-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden flex items-center justify-center p-4">
+        <div class="bg-[#141414] border border-neutral-800 rounded-2xl w-full max-w-lg p-6 shadow-2xl relative max-h-[90vh] overflow-y-auto">
+            <button onclick="closeAddModal()" class="absolute top-4 left-4 text-neutral-400 hover:text-white"><i class="fa-solid fa-xmark text-xl"></i></button>
+            <h3 class="text-lg font-bold text-amber-400 mb-4 flex items-center gap-2"><i class="fa-solid fa-plus-circle"></i> إضافة عباية أو وشاح جديد</h3>
+            <form id="add-product-form" onsubmit="handleAddNewProduct(event)" class="space-y-4 text-sm">
+                <div>
+                    <label class="block text-neutral-400 mb-1">اسم الموديل</label>
+                    <input type="text" id="new-name" required class="w-full bg-neutral-900 border border-neutral-800 rounded-lg p-3 text-white focus:outline-none focus:border-amber-500" placeholder="مثال: عباية المخمل الملكي">
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-neutral-400 mb-1">التصنيف</label>
+                        <select id="new-category" class="w-full bg-neutral-900 border border-neutral-800 rounded-lg p-3 text-white focus:outline-none focus:border-amber-500">
+                            <option value="عبايات">عبايات</option>
+                            <option value="أوشحة">أوشحة</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-neutral-400 mb-1">السعر (د.ل)</label>
+                        <input type="number" id="new-price" required class="w-full bg-neutral-900 border border-neutral-800 rounded-lg p-3 text-white focus:outline-none focus:border-amber-500" placeholder="280">
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-neutral-400 mb-1">المقاسات المتاحة (افصلي بينها بفاصلة)</label>
+                    <input type="text" id="new-sizes" required class="w-full bg-neutral-900 border border-neutral-800 rounded-lg p-3 text-white focus:outline-none focus:border-amber-500" placeholder="مثال: 52, 54, 56, 58 أو مقاس موحد">
+                </div>
+                <div>
+                    <label class="block text-neutral-400 mb-1">روابط الصور (رابط لكل سطر أو مفصولة بفاصلة)</label>
+                    <textarea id="new-images" rows="2" required class="w-full bg-neutral-900 border border-neutral-800 rounded-lg p-3 text-white focus:outline-none focus:border-amber-500 text-xs" placeholder="ضع رابط الصورة الرئيسية، ورابط الصور الإضافية..."></textarea>
+                </div>
+                <div>
+                    <label class="block text-neutral-400 mb-1">وصف المنتج</label>
+                    <textarea id="new-desc" rows="2" class="w-full bg-neutral-900 border border-neutral-800 rounded-lg p-3 text-white focus:outline-none focus:border-amber-500" placeholder="تفاصيل القماش والمميزات..."></textarea>
+                </div>
+                <button type="submit" class="w-full gold-bg text-black font-bold py-3 rounded-lg shadow-lg hover:opacity-90 transition">حفظ وإضافة للمتجر</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- نافذة تفاصيل المنتج والمقاسات ومعرض الصور -->
+    <div id="product-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden flex items-center justify-center p-4">
+        <div class="bg-[#141414] border border-neutral-800 rounded-2xl w-full max-w-2xl overflow-hidden shadow-2xl relative flex flex-col md:flex-row max-h-[90vh]">
+            <button onclick="closeProductModal()" class="absolute top-4 left-4 z-10 bg-black/60 w-8 h-8 rounded-full flex items-center justify-center text-neutral-300 hover:text-white"><i class="fa-solid fa-xmark"></i></button>
+            
+            <div class="md:w-1/2 flex flex-col bg-neutral-900 p-4 justify-center items-center">
+                <div class="w-full h-64 md:h-80 rounded-xl overflow-hidden mb-3 relative bg-black">
+                    <img id="modal-main-img" src="" alt="" class="w-full h-full object-cover">
+                </div>
+                <div id="modal-thumbnails" class="flex gap-2 overflow-x-auto w-full pb-1"></div>
+            </div>
+
+            <div class="md:w-1/2 p-6 flex flex-col justify-between overflow-y-auto">
+                <div>
+                    <span id="modal-category" class="text-xs text-amber-400 font-semibold uppercase tracking-wider"></span>
+                    <h3 id="modal-title" class="text-xl font-bold text-white mt-1 mb-2"></h3>
+                    <p id="modal-price" class="text-lg font-black text-amber-300 mb-4"></p>
+                    <p id="modal-desc" class="text-xs text-neutral-400 mb-6 leading-relaxed"></p>
+                    
+                    <div id="size-selection-area" class="mb-6">
+                        <label class="block text-xs text-neutral-400 mb-2 font-semibold">اختاري المقاس المناسب:</label>
+                        <div class="flex flex-wrap gap-2" id="sizes-list"></div>
+                    </div>
+                </div>
+
+                <button id="modal-add-btn" onclick="addCurrentProductToCart()" class="w-full gold-bg text-black font-bold py-3 rounded-xl shadow-lg hover:opacity-90 transition flex items-center justify-center gap-2 text-sm">
+                    <i class="fa-solid fa-bag-shopping"></i> إضافة إلى السلة
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- سلة التسوق الجانبية -->
+    <div id="cart-drawer" class="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm hidden justify-end">
+        <div class="bg-[#111] border-l border-neutral-800 w-full max-w-md h-full flex flex-col justify-between p-6 shadow-2xl relative">
+            <div>
+                <div class="flex items-center justify-between pb-4 border-b border-neutral-800">
+                    <h3 class="text-base font-bold flex items-center gap-2 text-amber-400"><i class="fa-solid fa-bag-shopping"></i> سلة المشتريات</h3>
+                    <button onclick="toggleCart()" class="text-neutral-400 hover:text-white"><i class="fa-solid fa-xmark text-xl"></i></button>
+                </div>
+                <div id="cart-items" class="py-4 space-y-4 max-h-[50vh] overflow-y-auto"></div>
+            </div>
+
+            <div class="border-t border-neutral-800 pt-4 space-y-4">
+                <div class="flex gap-2">
+                    <input type="text" id="coupon-input" placeholder="كود الخصم (SUTRA10)" class="w-full bg-neutral-900 border border-neutral-800 rounded-lg px-3 py-2 text-xs text-white uppercase focus:outline-none focus:border-amber-500">
+                    <button onclick="applyCoupon()" class="bg-neutral-800 hover:bg-neutral-700 px-4 rounded-lg text-xs font-bold border border-neutral-700">تطبيق</button>
+                </div>
+
+                <div class="space-y-1.5 text-xs">
+                    <div class="flex justify-between text-neutral-400"><span>المجموع الفرعي:</span><span id="cart-subtotal">0 د.ل</span></div>
+                    <div class="flex justify-between text-amber-400" id="discount-row" style="display:none;"><span>الخصم:</span><span id="cart-discount">0 د.ل</span></div>
+                    <div class="flex justify-between text-sm font-bold text-white pt-2 border-t border-neutral-800"><span>الإجمالي النهائي:</span><span id="cart-total" class="gold-gradient">0 د.ل</span></div>
+                </div>
+
+                <button onclick="checkoutWhatsApp()" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-3 rounded-xl shadow-lg transition flex items-center justify-center gap-2 text-sm">
+                    <i class="fa-brands fa-whatsapp text-lg"></i> إتمام الطلب عبر الواتساب
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- نافذة إدخال بيانات التوصيل قبل إتمام الطلب عبر الواتساب -->
+    <div id="checkout-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden flex items-center justify-center p-4">
+        <div class="bg-[#141414] border border-neutral-800 rounded-2xl w-full max-w-md p-6 shadow-2xl relative">
+            <button onclick="closeCheckoutModal()" class="absolute top-4 left-4 text-neutral-400 hover:text-white"><i class="fa-solid fa-xmark text-xl"></i></button>
+            <h3 class="text-lg font-bold text-amber-400 mb-2 flex items-center gap-2"><i class="fa-solid fa-truck-fast"></i> بيانات التوصيل</h3>
+            <p class="text-xs text-neutral-400 mb-4">الرجاء إدخال بياناتك لتأكيد الطلب وإرساله عبر الواتساب:</p>
+            
+            <form onsubmit="submitOrderToWhatsApp(event)" class="space-y-4 text-sm">
+                <div>
+                    <label class="block text-neutral-400 mb-1 text-xs">الاسم الكريم</label>
+                    <input type="text" id="client-name" required class="w-full bg-neutral-900 border border-neutral-800 rounded-lg p-3 text-white text-xs focus:outline-none focus:border-amber-500" placeholder="مثال: فاطمة أحمد">
+                </div>
+                <div>
+                    <label class="block text-neutral-400 mb-1 text-xs">رقم الهاتف (للتواصل أو الواتساب)</label>
+                    <input type="tel" id="client-phone" required class="w-full bg-neutral-900 border border-neutral-800 rounded-lg p-3 text-white text-xs focus:outline-none focus:border-amber-500" placeholder="مثال: 0912345678">
+                </div>
+                <div>
+                    <label class="block text-neutral-400 mb-1 text-xs">العنوان بالتفصيل (المدينة / المنطقة / الشارع)</label>
+                    <textarea id="client-address" rows="2" required class="w-full bg-neutral-900 border border-neutral-800 rounded-lg p-3 text-white text-xs focus:outline-none focus:border-amber-500" placeholder="مثال: طرابلس، زاوية الدهماني..."></textarea>
+                </div>
+                <button type="submit" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-3 rounded-xl shadow-lg transition flex items-center justify-center gap-2 text-sm mt-2">
+                    <i class="fa-brands fa-whatsapp text-lg"></i> إرسال الطلب الآن
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- نافذة قائمة المفضلة -->
+    <div id="wishlist-drawer" class="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm hidden justify-end">
+        <div class="bg-[#111] border-l border-neutral-800 w-full max-w-md h-full flex flex-col justify-between p-6 shadow-2xl relative">
+            <div>
+                <div class="flex items-center justify-between pb-4 border-b border-neutral-800">
+                    <h3 class="text-base font-bold flex items-center gap-2 text-amber-400"><i class="fa-solid fa-heart"></i> قائمة المفضلات</h3>
+                    <button onclick="toggleWishlist()" class="text-neutral-400 hover:text-white"><i class="fa-solid fa-xmark text-xl"></i></button>
+                </div>
+                <div id="wishlist-items" class="py-4 space-y-4 max-h-[70vh] overflow-y-auto"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- تذييل الصفحة -->
+    <footer class="bg-[#0b0b0b] border-t border-neutral-900 py-8 text-center text-neutral-500 text-xs mt-auto">
+        <p>© 2026 متجر سترة | SUTRA Abaya & Scarf Boutique. جميع الحقوق محفوظة.</p>
+    </footer>
+
+    <script src="lib/app.js"></script>
+</body>
+</html>
